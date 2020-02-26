@@ -1,0 +1,16 @@
+{
+    "version": "1.80",
+    "homepage": "https://sites.google.com/site/craftware/",
+    "description": "A keyboard input customization tool based on Python.",
+    "license": "Unknown",
+    "url": "http://crftwr.github.io/keyhac/download/keyhac_180.zip",
+    "hash": "61ac5e654c5dc528f64277bd360012efd34385c9658c7add80f4c0297bfd2641",
+    "bin": "keyhac.exe",
+    "checkver": {
+        "url": "https://sites.google.com/site/craftware/keyhac-en",
+        "regex": "Windows ver ([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "http://crftwr.github.io/keyhac/download/keyhac_$cleanVersion.zip"
+    }
+}
