@@ -3,12 +3,31 @@
     "homepage": "https://sites.google.com/site/craftware/",
     "description": "A keyboard input customization tool based on Python.",
     "license": "Unknown",
+    "notes": "Run 'keyhac-add-startup' to add keyhac to startup programs.",
     "url": "http://crftwr.github.io/keyhac/download/keyhac_180.zip",
     "hash": "61ac5e654c5dc528f64277bd360012efd34385c9658c7add80f4c0297bfd2641",
     "installer": {
         "script": [
-            "Write-Host \"keyhac has been added to the startup programs.\""
+            "$StartupDir = [System.Environment]::GetFolderPath('Startup')",
+            "if ($global) {",
+            "    $StartupDir = [System.Environment]::GetFolderPath('CommonStartup')",
+            "}",
+            "$CurrentDir = $dir",
+            "$Content = @(",
+            "    '$WshShell = New-Object -ComObject WScript.Shell'",
+            "    \"`$Shortcut = `$WshShell.CreateShortcut('$StartupDir\\keyhac.lnk')\"",
+            "    \"`$Shortcut.TargetPath = '$CurrentDir\\keyhac.exe'\"",
+            "    \"`$Shortcut.WorkingDirectory = '$CurrentDir'\"",
+            "    '$Shortcut.Save()'",
+            "    'Write-Host \"keyhac has been added to the startup programs.\"'",
+            "    'Write-Host \"Run `keyhac-remove-startup` to remove from startup.\"'",
+            ")",
+            "Set-Content -Path \"$dir\\keyhac-add-startup.ps1\" -Value ($Content -join \"`r`n\") -Encoding ASCII",
+            "Set-Content -Path \"$dir\\keyhac-remove-startup.ps1\" -Value \"Remove-Item '$StartupDir\\keyhac.lnk' -ErrorAction SilentlyContinue -Force\" -Encoding ASCII"
         ]
+    },
+    "uninstaller": {
+        "file": "keyhac-remove-startup.ps1"
     },
     "extract_dir": "keyhac",
     "bin": [
@@ -22,5 +41,8 @@
     },
     "autoupdate": {
         "url": "http://crftwr.github.io/keyhac/download/keyhac_$cleanVersion.zip"
+    },
+    "suggest": {
+        "vcredist": "extras/vcredist2017"
     }
 }
