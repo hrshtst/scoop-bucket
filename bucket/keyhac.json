@@ -11,7 +11,11 @@
         ]
     },
     "extract_dir": "keyhac",
-    "bin": "keyhac.exe",
+    "bin": [
+        "keyhac.exe",
+        "keyhac-add-startup.ps1",
+        "keyhac-remove-startup.ps1"
+    ],
     "checkver": {
         "url": "https://sites.google.com/site/craftware/keyhac-en",
         "regex": "Windows ver ([\\d.]+)"
