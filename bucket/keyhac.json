@@ -4,7 +4,7 @@
     "description": "A keyboard input customization tool based on Python.",
     "license": "Unknown",
     "notes": "Run 'keyhac-add-startup' to add keyhac to startup programs.",
-    "url": "http://crftwr.github.io/keyhac/download/keyhac_180.zip",
+    "url": "https://crftwr.github.io/keyhac/download/keyhac_180.zip",
     "hash": "61ac5e654c5dc528f64277bd360012efd34385c9658c7add80f4c0297bfd2641",
     "installer": {
         "script": [
@@ -37,12 +37,12 @@
     ],
     "checkver": {
         "url": "https://sites.google.com/site/craftware/keyhac-en",
-        "regex": "Windows ver ([\\d.]+)"
+        "regex": "Keyhac for Windows ver ([\\d.]+)"
     },
     "autoupdate": {
-        "url": "http://crftwr.github.io/keyhac/download/keyhac_$cleanVersion.zip"
+        "url": "https://crftwr.github.io/keyhac/download/keyhac_$cleanVersion.zip"
     },
     "suggest": {
-        "vcredist": "extras/vcredist2017"
+        "Microsoft Visual C++ Redistributable for Visual Studio 2017": "extras/vcredist2017"
     }
 }
