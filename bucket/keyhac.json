@@ -1,11 +1,11 @@
 {
-    "version": "1.80",
+    "version": "1.82",
     "homepage": "https://sites.google.com/site/craftware/",
     "description": "A keyboard input customization tool based on Python.",
     "license": "Unknown",
     "notes": "Run 'keyhac-add-startup' to add keyhac to startup programs.",
-    "url": "https://crftwr.github.io/keyhac/download/keyhac_180.zip",
-    "hash": "61ac5e654c5dc528f64277bd360012efd34385c9658c7add80f4c0297bfd2641",
+    "url": "https://crftwr.github.io/keyhac/download/keyhac_182.zip",
+    "hash": "38c0fead7375ff4d1a7e5bfa4db75656d7d7849392da7ccaa8340c60f90ac679",
     "installer": {
         "script": [
             "$startup = shortcut_folder $global | Select-Object -ExpandProperty Path | Split-Path -Parent | Join-Path -ChildPath 'Startup'",
