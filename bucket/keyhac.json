@@ -35,6 +35,26 @@
         "keyhac-add-startup.ps1",
         "keyhac-remove-startup.ps1"
     ],
+    "shortcuts": [
+        [
+            "keyhac.exe",
+            "Keyhac - A keyboard input customization tool"
+        ]
+    ],
+    "persist": [
+        "config.py",
+        "keyhac.ini",
+        "dict",
+        "extension"
+    ],
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\config.py\")) {",
+        "    Copy-Item -Path \"$dir\\_config.py\" -Destination \"$dir\\config.py\"",
+        "}",
+        "if (!(Test-Path \"$persist_dir\\keyhac.ini\")) {",
+        "    New-Item -Path \"$dir\\keyhac.ini\" -ItemType File | Out-Null",
+        "}"
+    ],
     "checkver": {
         "url": "https://sites.google.com/site/craftware/keyhac-en",
         "regex": "Keyhac for Windows ver ([\\d.]+)"
