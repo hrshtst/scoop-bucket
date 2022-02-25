@@ -1,0 +1,44 @@
+{
+    "version": "1.8.1",
+    "homepage": "https://textext.github.io/textext/",
+    "description": "Re-editable LaTeX graphics for Inkscape",
+    "license": "BSD-3-Clause",
+    "depends": "extras/inkscape",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/textext/textext/releases/download/1.8.1/TexText-Windows-1.8.1.zip",
+            "hash": "364fbebac71033498aeca51d98b912f3b8f06bf55cf77e40cd81078b7557cb1c",
+            "extract_dir": "textext-1.8.1"
+        }
+    },
+    "pre_install": [
+        "(Get-Content \"$dir\\setup_win.bat\") -replace 'pause' | Out-File \"$dir\\setup_win.bat\" -Encoding Ascii -Force"
+    ],
+    "installer": {
+        "file": "setup_win.bat",
+        "args": [
+            "--inkscape-executable",
+            "\"$scoopdir\\apps\\inkscape\\current\\bin\\inkscape.exe\"",
+            "--skip-requirements-check"
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "if (Test-Path \"$env:APPDATA\\inkscape\\extensions\\textext\") {",
+            "   Remove-Item \"$env:APPDATA\\inkscape\\extensions\\textext\" -Recurse",
+            "}"
+        ]
+    },
+    "checkver": {
+        "url": "https://github.com/textext/textext/releases",
+        "regex": "/tree/([\\d.-]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/textext/textext/releases/download/$version/TexText-Windows-$version.zip",
+                "extract_dir": "textext-$version"
+            }
+        }
+    }
+}
