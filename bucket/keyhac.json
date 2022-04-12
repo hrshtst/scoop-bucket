@@ -9,12 +9,12 @@
     "installer": {
         "script": [
             "$startup = shortcut_folder $global | Select-Object -ExpandProperty Path | Split-Path -Parent | Join-Path -ChildPath 'Startup'",
-            "$current = currentdir $dir",
+            "$current_dir = if (get_config NO_JUNCTIONS) { $dir } else { \"$(appdir $app $global)\\current\"}",
             "$cont = @(",
             "    '$wsShell = New-Object -ComObject WScript.Shell'",
             "    \"`$wsShell = `$wsShell.CreateShortcut('$startup\\keyhac.lnk')\"",
-            "    \"`$wsShell.TargetPath = '$current\\keyhac.exe'\"",
-            "    \"`$wsShell.WorkingDirectory = '$current'\"",
+            "    \"`$wsShell.TargetPath = '$current_dir\\keyhac.exe'\"",
+            "    \"`$wsShell.WorkingDirectory = '$current_dir'\"",
             "    '$wsShell.Save()'",
             "    'Write-Host \"keyhac has been added to the startup programs.\"'",
             "    'Write-Host \"Run `keyhac-remove-startup` to remove from startup.\"'",
