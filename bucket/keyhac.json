@@ -9,7 +9,7 @@
     "installer": {
         "script": [
             "$startup = shortcut_folder $global | Select-Object -ExpandProperty Path | Split-Path -Parent | Join-Path -ChildPath 'Startup'",
-            "$current = current_dir $dir",
+            "$current = currentdir $dir",
             "$cont = @(",
             "    '$wsShell = New-Object -ComObject WScript.Shell'",
             "    \"`$wsShell = `$wsShell.CreateShortcut('$startup\\keyhac.lnk')\"",
