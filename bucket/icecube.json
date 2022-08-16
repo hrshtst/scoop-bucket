@@ -1,0 +1,76 @@
+{
+    "version": "2.0.0",
+    "description": "CubeICE is a file archiver that prevents problems with garbled characters when decompressing files.",
+    "homepage": "https://www.cube-soft.jp/cubeice/",
+    "license": "Apache-2.0",
+    "pre_install": [
+        "$items = @{",
+        "    \"dll\" = @(",
+        "        \"AlphaFS\",",
+        "        \"Cube.Core\",",
+        "        \"Cube.FileSystem.AlphaFS\",",
+        "        \"Cube.FileSystem.SevenZip\",",
+        "        \"Cube.FileSystem.SevenZip.Ice\",",
+        "        \"Cube.Forms\",",
+        "        \"Cube.Net\",",
+        "        \"Cube.Services\",",
+        "        \"NLog\"",
+        "    )",
+        "    \"exe\" = @(",
+        "        \"CubeChecker\",",
+        "        \"cubeice\",",
+        "        \"cubeice-associate\",",
+        "        \"cubeice-setting\"",
+        "    )",
+        "    \"config\" = @(",
+        "        \"CubeChecker.exe\",",
+        "        \"cubeice.exe\",",
+        "        \"cubeice-associate.exe\",",
+        "        \"cubeice-setting.exe\"",
+        "    )",
+        "}",
+        "$append = \",1\"",
+        "foreach ($item in $items.GetEnumerator()) {",
+        "    $ext = $item.Name",
+        "    foreach ($i in $item.Value) {",
+        "        Copy-Item \"$dir\\$i$append.$ext\" \"$dir\\$i.$ext\"",
+        "    }",
+        "}"
+    ],
+    "bin": [ "CubeChecker.exe", "cubeice.exe", "cubeice-associate.exe", "cubeice-setting.exe" ],
+    "shortcuts": [
+        [
+            "cubeice.exe",
+            "CubeICE"
+        ],
+        [
+            "cubeice-setting.exe",
+            "CubeICE Setting"
+        ]
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://dl.cube-soft.jp/archive/cubeice-2.0.0-x64.exe",
+            "hash": "8e8085575458059454764c10df4e82935a8d9333493be35b94495de49fdbb4ac"
+        },
+        "32bit": {
+            "url": "https://dl.cube-soft.jp/archive/cubeice-2.0.0-x86.exe",
+            "hash": "0feeb2f7e7b6ae44b28128cf3dbe2a7b55f539b57c78fcaecfc5755bd4e10362"
+        }
+    },
+    "innosetup": true,
+    "checkver": {
+        "url": "https://www.cube-soft.jp/cubeice/releases.php",
+        "regex": "cubeice-([\\d.]+).exe"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://dl.cube-soft.jp/archive/cubeice-$version-x64.exe"
+            },
+            "32bit": {
+                "url": "https://dl.cube-soft.jp/archive/cubeice-$version-x86.exe"
+            }
+        }
+    }
+}
