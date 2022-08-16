@@ -13,7 +13,7 @@
             "hash": "sha1:be9f598b51f4eb40c16b6f81d35c11d0c66a3f9f"
         }
     },
-    "innosetup": "true",
+    "innosetup": true,
     "bin": "pstoedit.exe",
     "checkver": {
         "url": "https://sourceforge.net/projects/pstoedit/rss?pass=/pstoedit/",
