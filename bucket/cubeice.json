@@ -1,5 +1,5 @@
 {
-    "version": "2.0.0",
+    "version": "2.1.0",
     "description": "CubeICE is a file archiver that prevents problems with garbled characters when decompressing files.",
     "homepage": "https://www.cube-soft.jp/cubeice/",
     "license": "Apache-2.0",
@@ -37,7 +37,12 @@
         "    }",
         "}"
     ],
-    "bin": [ "CubeChecker.exe", "cubeice.exe", "cubeice-associate.exe", "cubeice-setting.exe" ],
+    "bin": [
+        "CubeChecker.exe",
+        "cubeice.exe",
+        "cubeice-associate.exe",
+        "cubeice-setting.exe"
+    ],
     "shortcuts": [
         [
             "cubeice.exe",
@@ -50,12 +55,12 @@
     ],
     "architecture": {
         "64bit": {
-            "url": "https://dl.cube-soft.jp/archive/cubeice-2.0.0-x64.exe",
-            "hash": "8e8085575458059454764c10df4e82935a8d9333493be35b94495de49fdbb4ac"
+            "url": "https://dl.cube-soft.jp/archive/cubeice-2.1.0-x64.exe",
+            "hash": "c14000bd6cfc2081d488ed88218616c38c0d04ef9a55f2a1d58c9d66a4aaa3f5"
         },
         "32bit": {
-            "url": "https://dl.cube-soft.jp/archive/cubeice-2.0.0-x86.exe",
-            "hash": "0feeb2f7e7b6ae44b28128cf3dbe2a7b55f539b57c78fcaecfc5755bd4e10362"
+            "url": "https://dl.cube-soft.jp/archive/cubeice-2.1.0-x86.exe",
+            "hash": "91f029dbb6c708d26f34e21a7baa9b00075d9e970f55ee6823b53441f7770c2f"
         }
     },
     "innosetup": true,
